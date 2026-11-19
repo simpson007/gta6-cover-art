@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Cover Studio — GTA 6-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>VICE CITY <span>COVER STUDIO</span></h1>
+    <p class="tagline">Turn your photo + a caption into GTA-style multi-panel cover art. Your photos never leave this machine.</p>
+  </div>
+  <button id="exportBtn" class="export">Export PNG ↓</button>
+</header>
+
+<main class="editor">
+  <section class="preview-wrap">
+    <canvas id="preview" width="860" height="484"></canvas>
+    <p class="hint">Drag on the preview to pan the active panel's photo. Pick a panel below to edit it.</p>
+  </section>
+
+  <aside class="controls">
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <label class="upload-btn" for="upload">Upload your photos (multiple)</label>
+      <input id="upload" type="file" accept="image/*" multiple hidden>
+      <div class="row">
+        <button id="sampleBoulevard" class="mini">Try sample: Boulevard</button>
+        <button id="samplePier" class="mini">Try sample: Pier</button>
+      </div>
+      <div class="row">
+        <button id="fillAll" class="mini">Fill all panels with first photo</button>
+        <button id="clearAll" class="mini">Clear photos</button>
+      </div>
+      <div id="panels" class="panels"></div>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout &amp; size</h2>
+      <div id="layouts" class="chips"></div>
+      <div id="sizes" class="chips"></div>
+    </section>
+
+    <section class="group">
+      <h2>3 · Caption</h2>
+      <label class="field">Main title
+        <input id="title" type="text" value="VICE CITY" maxlength="40">
+      </label>
+      <label class="field">Subline (optional)
+        <input id="subline" type="text" value="Sunset Heist" maxlength="60">
+      </label>
+      <div id="captionStyles" class="chips"></div>
+      <div id="captionPos" class="chips"></div>
+    </section>
+
+    <section class="group">
+      <h2>4 · Vice City grade</h2>
+      <div id="grades" class="chips"></div>
+      <label class="check"><input id="skyline" type="checkbox" checked> Skyline + palm silhouettes</label>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="frame" type="checkbox" checked> Neon accent frame</label>
+      <label class="field">Frame colour
+        <input id="frameColor" type="color" value="#ff2e88">
+      </label>
+    </section>
+
+    <p class="note">Original design. No Rockstar Games logos, artwork, characters or fonts.
+    Lettering: Anton (SIL Open Font License), vendored in app/fonts/.
+    Sample photos were made with an image model for make.fun and are free to use.</p>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

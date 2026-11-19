@@ -1,0 +1,206 @@
+/* Vice City Cover Studio — editor chrome. The cover itself is drawn on canvas. */
+@font-face {
+  font-family: 'Anton';
+  src: url('fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0d0218;
+  color: #f8f9fa;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 22px;
+  background: linear-gradient(90deg, #2b1055, #ff2e88 55%, #ff7b54);
+  border-bottom: 3px solid #ffd166;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: 'Anton', 'Arial Narrow', sans-serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.topbar h1 span { color: #ffd166; }
+.tagline { margin: 2px 0 0; font-size: 13px; opacity: 0.92; }
+
+.export {
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #2b1055;
+  background: #ffd166;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 209, 102, 0.65);
+}
+.export:hover { background: #ffe08a; }
+
+.editor {
+  display: flex;
+  gap: 20px;
+  padding: 18px 22px 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.preview-wrap { flex: 1 1 560px; min-width: 320px; }
+#preview {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 40px rgba(255, 46, 136, 0.35);
+  cursor: grab;
+  touch-action: none;
+  background: #2b1055;
+}
+#preview:active { cursor: grabbing; }
+.hint { font-size: 13px; color: #c9b8e8; }
+
+.controls { flex: 0 1 360px; min-width: 300px; }
+.group {
+  background: #1c0733;
+  border: 1px solid #3d1a63;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.group h2 {
+  margin: 0 0 10px;
+  font-family: 'Anton', sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffd166;
+}
+.row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+
+.chip {
+  background: #2b1055;
+  color: #f8f9fa;
+  border: 1px solid #7b2fbe;
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.chip:hover { border-color: #ff2e88; }
+.chip.on { background: #ff2e88; border-color: #ff2e88; }
+
+.swatch {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+.swatch.on { border-color: #fff; }
+
+.mini {
+  background: #2b1055;
+  color: #e0aaff;
+  border: 1px solid #7b2fbe;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.mini:hover { color: #fff; border-color: #ff2e88; }
+
+.upload-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff2e88, #ff7b54);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.upload-btn:hover { filter: brightness(1.1); }
+
+.field { display: block; font-size: 13px; margin: 8px 0; color: #c9b8e8; }
+.field input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px 10px;
+  font-size: 15px;
+  color: #fff;
+  background: #0d0218;
+  border: 1px solid #7b2fbe;
+  border-radius: 6px;
+}
+.field input[type="color"] {
+  display: block;
+  width: 64px;
+  height: 34px;
+  margin-top: 4px;
+  padding: 2px;
+  background: #0d0218;
+  border: 1px solid #7b2fbe;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.check { display: block; font-size: 14px; margin: 7px 0; cursor: pointer; }
+.check input { accent-color: #ff2e88; }
+
+.panels { margin-top: 10px; }
+.panel-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #3d1a63;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.panel-row.active { border-color: #ff2e88; background: rgba(255, 46, 136, 0.12); }
+.panel-name {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+.panel-row label { font-size: 12px; color: #c9b8e8; display: flex; align-items: center; gap: 6px; }
+.panel-row input[type="range"] { accent-color: #ff2e88; width: 110px; }
+
+.note { font-size: 12px; line-height: 1.5; color: #9d8fc0; }
+
+/* Screenshot scene: cover alone, no editor chrome. */
+body.shot-cover { background: #0d0218; }
+body.shot-cover .topbar,
+body.shot-cover .controls,
+body.shot-cover .hint { display: none; }
+body.shot-cover .editor { padding: 0; margin: 0; display: block; }
+body.shot-cover .preview-wrap { flex: none; }
+body.shot-cover #preview {
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 auto;
+}
