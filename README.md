@@ -17,7 +17,7 @@ Turn your photo and a caption into GTA 6-style multi-panel cover art, and export
 ## Try it
 
 ```sh
-node serve.ts
+node serve.ts   # standard library only, nothing to install
 # open http://localhost:8080
 ```
 
