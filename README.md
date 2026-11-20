@@ -1,8 +1,8 @@
 # Vice City Cover Studio
 
-[![Competition](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/c/gta6-cover-art-01)
-[![Rank](https://make.fun/badge/gta6-cover-art-01/simpson007/gta6-cover-art/rank.svg)](https://make.fun/c/gta6-cover-art-01)
-[![Reward](https://make.fun/badge/gta6-cover-art-01/simpson007/gta6-cover-art/reward.svg)](https://make.fun/c/gta6-cover-art-01)
+[![Competition](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![Rank](https://make.fun/badge/gta6-cover-art-01/simpson007/gta6-cover-art/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![Reward](https://make.fun/badge/gta6-cover-art-01/simpson007/gta6-cover-art/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 
 Turn your photo and a caption into GTA 6-style multi-panel cover art, and export it as a PNG to share. A static web app — no build step, no network requests, your photos never leave your machine.
 
